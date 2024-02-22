@@ -16,7 +16,7 @@ var (
 	IsDev                  = Mode == "development"
 	Port                   = GetEnvAsString("PORT", "8080")
 	DSN                    = GetEnvAsString("DSN", "file::memory:?cache=shared")
-	AllowedOrigins         = GetEnvAsSlice("COMMA_SEPARATED_ALLOWED_ORIGINS", []string{})
+	AllowedOrigins         = GetEnvAsStringSlice("COMMA_SEPARATED_ALLOWED_ORIGINS", []string{})
 	GracefulTimeoutSeconds = GetEnvAsInt("GRACEFUL_TIMEOUT_SECONDS", gracefulTimeoutDefault)
 )
 
@@ -44,7 +44,7 @@ func GetEnvAsInt(key string, defaultValue int) int {
 	return defaultValue
 }
 
-func GetEnvAsSlice(key string, defaultValue []string) []string {
+func GetEnvAsStringSlice(key string, defaultValue []string) []string {
 	strValue := GetEnvAsString(key, strings.Join(defaultValue, ","))
 	return strings.Split(strValue, ",")
 }
