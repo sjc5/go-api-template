@@ -13,7 +13,7 @@ A few things to try:
 - At `/`, the response should be `.` with a `200` status code. This is the healthcheck route set up by the heartbeat middleware.
 - At `/public`, the response should be `Welcome` with a `200` status code. This is a public route (no session required).
 - At `/protected`, you have a 50/50 chance of getting an `Unauthorized` response with a `401` status code, or a response showing you a fake User ID with a `200` status code. This is a protected route (session required). There's just a faux session getter using a random number generator here – replace with your actual logic.
-- If you rapidly refresh your browser at any route, you should get a `Too Many Requests` response with a `429` status code from the rate limiter middleware. This is set ultra conservatively at 1 request per second just to make it easy to trigger for demo purposes.
+- If you rapidly refresh your browser at any route, you should get a `Too Many Requests` response with a `429` status code from the rate limiter middleware. For demo purposes, this is set at 1 request per second to make it easy to trigger.
 
 ## Some Notes
 
@@ -23,11 +23,11 @@ A few things to try:
 
 ### Auth
 
-This template sets up a tiny bit of scaffolding show how you might interact with sessions using middleware, but it doesn't set up an auth system at all. Maybe you want cookies, maybe you want passkeys, maybe you want JWTs, who knows. So that's your responsibility. If you go with cookies, make sure you handle setting up CSRF protection (and perhaps cookie signing).
+This template sets up a bit of scaffolding to show how you might interact with sessions using context, but it doesn't set up an actual authentication system at all. So that's your responsibility.
 
 ### Database
 
-This template doesn't actually do anything with the database, but it just shows how to set one up with GORM. The instance is a global variable at `global.DB`.
+This template doesn't actually do anything interesting with the database, but it does show how to set up a SQLite database using GORM. The GORM instance is a global variable at `global.DB`.
 
 #### Migrations
 
