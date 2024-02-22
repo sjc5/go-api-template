@@ -12,12 +12,12 @@ import (
 const gracefulTimeoutDefault = 10
 
 var (
-	Mode                   = "production"
-	IsDev                  = false
-	Port                   = "8080"
-	DSN                    = "file::memory:?cache=shared"
-	AllowedOrigins         []string
-	GracefulTimeoutSeconds = gracefulTimeoutDefault
+	Mode                   = GetEnvAsString("MODE", "production")
+	IsDev                  = Mode == "development"
+	Port                   = GetEnvAsString("PORT", "8080")
+	DSN                    = GetEnvAsString("DSN", "file::memory:?cache=shared")
+	AllowedOrigins         = GetEnvAsSlice("COMMA_SEPARATED_ALLOWED_ORIGINS", []string{})
+	GracefulTimeoutSeconds = GetEnvAsInt("GRACEFUL_TIMEOUT_SECONDS", gracefulTimeoutDefault)
 )
 
 func init() {
@@ -25,16 +25,26 @@ func init() {
 	if err != nil {
 		fmt.Printf("error loading .env file: %s", err)
 	}
-	Mode = os.Getenv("MODE")
-	IsDev = Mode == "development"
-	Port = os.Getenv("PORT")
-	DSN = os.Getenv("DSN")
-	allowedOriginsString := os.Getenv("COMMA_SEPARATED_ALLOWED_ORIGINS")
-	allowedOrigins := strings.Split(allowedOriginsString, ",")
-	AllowedOrigins = allowedOrigins
-	GracefulTimeoutSeconds, err = strconv.Atoi(os.Getenv("GRACEFUL_TIMEOUT_SECONDS"))
-	if err != nil {
-		fmt.Printf("error parsing GRACEFUL_TIMEOUT_SECONDS, defaulting to %d. error: %s", gracefulTimeoutDefault, err)
-		GracefulTimeoutSeconds = gracefulTimeoutDefault
+}
+
+func GetEnvAsString(key string, defaultValue string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
 	}
+	return defaultValue
+}
+
+func GetEnvAsInt(key string, defaultValue int) int {
+	strValue := GetEnvAsString(key, strconv.Itoa(defaultValue))
+	value, err := strconv.Atoi(strValue)
+	if err == nil {
+		return value
+	}
+	fmt.Printf("error parsing %s, defaulting to %d. error: %s", key, defaultValue, err)
+	return defaultValue
+}
+
+func GetEnvAsSlice(key string, defaultValue []string) []string {
+	strValue := GetEnvAsString(key, strings.Join(defaultValue, ","))
+	return strings.Split(strValue, ",")
 }
