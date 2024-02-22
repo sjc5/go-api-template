@@ -1,6 +1,7 @@
 package env
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -34,6 +35,7 @@ func init() {
 	AllowedOrigins = allowedOrigins
 	GracefulTimeoutSeconds, err = strconv.Atoi(os.Getenv("GRACEFUL_TIMEOUT_SECONDS"))
 	if err != nil {
-		log.Panicf("error converting GRACEFUL_TIMEOUT_SECONDS to integer. defaulting to %d", gracefulTimeoutDefault)
+		fmt.Printf("error parsing GRACEFUL_TIMEOUT_SECONDS, defaulting to %d. Error: %s", gracefulTimeoutDefault, err)
+		GracefulTimeoutSeconds = gracefulTimeoutDefault
 	}
 }
