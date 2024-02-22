@@ -2,7 +2,6 @@ package env
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -24,7 +23,7 @@ var (
 func init() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Panicf("Error loading .env file: %s", err)
+		fmt.Printf("error loading .env file: %s", err)
 	}
 	Mode = os.Getenv("MODE")
 	IsDev = Mode == "development"
@@ -35,7 +34,7 @@ func init() {
 	AllowedOrigins = allowedOrigins
 	GracefulTimeoutSeconds, err = strconv.Atoi(os.Getenv("GRACEFUL_TIMEOUT_SECONDS"))
 	if err != nil {
-		fmt.Printf("error parsing GRACEFUL_TIMEOUT_SECONDS, defaulting to %d. Error: %s", gracefulTimeoutDefault, err)
+		fmt.Printf("error parsing GRACEFUL_TIMEOUT_SECONDS, defaulting to %d. error: %s", gracefulTimeoutDefault, err)
 		GracefulTimeoutSeconds = gracefulTimeoutDefault
 	}
 }
