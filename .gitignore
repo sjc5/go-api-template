@@ -1,0 +1,7 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# MacOS
+.DS_Store
