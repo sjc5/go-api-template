@@ -8,3 +8,6 @@
 
 # Development
 dev.sqlite
+
+# Artifacts
+dist

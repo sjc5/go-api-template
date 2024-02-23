@@ -1,9 +1,9 @@
-run:
-	@echo "running server"
-	@go run ./cmd/app
+dev:
+	@echo "MAKE: dev"
+	@go run ./cmd/dev
 
 migrate:
-	@echo "migrating database"
+	@echo "MAKE: migrate"
 	@go run ./cmd/migrate
 
-.PHONY: run migrate
+.PHONY: dev migrate

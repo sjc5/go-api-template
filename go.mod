@@ -8,12 +8,14 @@ require (
 	github.com/go-playground/validator/v10 v10.18.0
 	github.com/joho/godotenv v1.5.1
 	github.com/rs/cors v1.10.1
+	github.com/sjc5/kiruna v0.0.1
 	gorm.io/driver/sqlite v1.5.5
 	gorm.io/gorm v1.25.7
 )
 
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
+	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect

@@ -5,7 +5,7 @@
 1. Clone the repo
 2. Change your module name in `go.mod`
 3. Run `go mod tidy`
-4. Run `make run` or `go run ./cmd/app`
+4. Run `make dev`
 5. Visit `http://localhost:8080`
 
 A few things to try:
@@ -16,6 +16,10 @@ A few things to try:
 - If you rapidly refresh your browser at any route, you should get a `Too Many Requests` response with a `429` status code from the rate limiter middleware. For demo purposes, this is set at 1 request per second to make it easy to trigger.
 
 ## Some Notes
+
+### Dev tooling
+
+This template uses [Kiruna](https://github.com/sjc5/kiruna) for dev server reloads. If you're building a full-stack app, Kiruna can do a lot more (like hot CSS reloading, browser refreshes, static asset hashing, etc.), but in this case we are just using it as an alternative to [Air](https://github.com/cosmtrek/air). The nice thing about Kiruna for this use case is that it doesn't require you to install any extra tooling on your machine, while still having a very light footprint in the repo.
 
 ### Conventions
 
