@@ -5,8 +5,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	chimiddleware "github.com/go-chi/chi/v5/middleware"
-	"github.com/go-chi/cors"
 	"github.com/go-chi/httprate"
+	"github.com/rs/cors"
 	"github.com/sjc5/go-api-template/env"
 	"github.com/sjc5/go-api-template/session"
 )
@@ -23,7 +23,7 @@ func ApplyGlobal(r *chi.Mux) {
 
 		// Security middleware
 		httprate.LimitByRealIP(1, 1*time.Second),
-		cors.Handler(cors.Options{AllowedOrigins: env.AllowedOrigins}),
+		cors.New(cors.Options{AllowedOrigins: env.AllowedOrigins}).Handler,
 		secureHeadersMiddleware,
 
 		// Some more basic middleware appropriate to apply later
