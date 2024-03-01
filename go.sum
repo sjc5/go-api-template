@@ -32,8 +32,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/rs/cors v1.10.1 h1:L0uuZVXIKlI1SShY2nhFfo44TYvDPQ1w4oFkUJNfhyo=
 github.com/rs/cors v1.10.1/go.mod h1:XyqrcTp5zjWr1wsJ8PIRZssZ8b/WMcMf71DJnit4EMU=
-github.com/sjc5/kiruna v0.0.1 h1:jlkdeKp3McZiOXpqitJPKqxP1E0jCfsu3/WD32Tm/Jc=
-github.com/sjc5/kiruna v0.0.1/go.mod h1:1BJPQ9IQuiOxTq0Ef1vDHX1Vnqhf8RqpYzv/ZClxM9k=
+github.com/sjc5/kiruna v0.0.3 h1:ajdlG0ecCpXK3NZSKidzSx1z4F+pO6DvFYBu8lSvTmA=
+github.com/sjc5/kiruna v0.0.3/go.mod h1:1BJPQ9IQuiOxTq0Ef1vDHX1Vnqhf8RqpYzv/ZClxM9k=
 github.com/sjc5/kit v0.0.1 h1:ShqE1WF7uN4QgytHFmsvw46l1Y04N+NV/8qZ6I82EQg=
 github.com/sjc5/kit v0.0.1/go.mod h1:O4Uv4Ef6hmfTzMjByFhRrOghJM12VBIDuZQtNN3j9gM=
 github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=

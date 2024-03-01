@@ -8,7 +8,7 @@ require (
 	github.com/go-playground/validator/v10 v10.18.0
 	github.com/joho/godotenv v1.5.1
 	github.com/rs/cors v1.10.1
-	github.com/sjc5/kiruna v0.0.1
+	github.com/sjc5/kiruna v0.0.3
 	github.com/sjc5/kit v0.0.1
 	gorm.io/driver/sqlite v1.5.5
 	gorm.io/gorm v1.25.7
