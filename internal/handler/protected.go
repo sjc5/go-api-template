@@ -1,10 +1,10 @@
-package handle
+package handler
 
 import (
 	"fmt"
 	"net/http"
 
-	"github.com/sjc5/go-api-template/session"
+	"github.com/sjc5/go-api-template/internal/session"
 )
 
 func Protected(w http.ResponseWriter, r *http.Request) {

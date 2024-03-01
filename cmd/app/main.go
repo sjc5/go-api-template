@@ -10,8 +10,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/sjc5/go-api-template/env"
-	"github.com/sjc5/go-api-template/router"
+	"github.com/sjc5/go-api-template/internal/platform"
+	"github.com/sjc5/go-api-template/internal/router"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	r := router.Init()
 
 	// Initialize the server
-	server := &http.Server{Addr: "0.0.0.0:" + env.Port, Handler: r}
+	server := &http.Server{Addr: "0.0.0.0:" + platform.GetEnv().Port, Handler: r}
 
 	// Setup the server run context
 	serverCtx, serverStopCtx := context.WithCancel(context.Background())
@@ -31,7 +31,7 @@ func main() {
 		<-sig
 
 		// Shutdown the server with a grace period
-		shutdownCtx, cancelCtx := context.WithTimeout(serverCtx, time.Duration(env.GracefulTimeoutSeconds)*time.Second)
+		shutdownCtx, cancelCtx := context.WithTimeout(serverCtx, time.Duration(platform.GetEnv().GracefulTimeoutSeconds)*time.Second)
 		defer cancelCtx()
 
 		go func() {
@@ -50,7 +50,7 @@ func main() {
 	}()
 
 	// Start the server
-	fmt.Printf("starting server on: http://localhost:%s\n", env.Port)
+	fmt.Printf("starting server on: http://localhost:%s\n", platform.GetEnv().Port)
 	err := server.ListenAndServe()
 	if err != nil && err != http.ErrServerClosed {
 		log.Fatal(err)

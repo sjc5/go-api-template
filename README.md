@@ -31,7 +31,7 @@ This template sets up a bit of scaffolding to show how you might interact with s
 
 ### Database
 
-This template doesn't actually do anything interesting with the database, but it does show how to set up a SQLite database using GORM. The GORM instance is a global variable at `global.DB`.
+This template doesn't actually do anything interesting with the database, but it does show how to set up a SQLite database using GORM. The GORM instance is a global variable at `platform.DB`.
 
 #### Migrations
 
@@ -55,7 +55,7 @@ global.DB, err = gorm.Open(mysql.Open(env.DSN), &gorm.Config{
 
 ### Validation
 
-This template doesn't do any validation, but it does show how to set up a global validator instance (available at `global.Validate`). Additionally, there are a couple utilities in the utils package to help with validating user input (`UnmarshalAndValidateFromRequest` and `UnmarshalAndValidateFromString`).
+This template doesn't do any validation, but it does show how to set up a global validator instance (available at `platform.Validate`). Additionally, there are a couple nice utility methods for simultaneously marshaling and validating JSON that are nice to know about: `platform.Validate.UnmarshalFromRequest()` and `platform.Validate.UnmarshalFromString()`. This uses `go-playground/validator` under the hood, so use the tags and syntax from that library.
 
 ## License
 

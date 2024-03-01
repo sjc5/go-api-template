@@ -7,8 +7,9 @@ import (
 	chimiddleware "github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/httprate"
 	"github.com/rs/cors"
-	"github.com/sjc5/go-api-template/env"
-	"github.com/sjc5/go-api-template/session"
+	"github.com/sjc5/go-api-template/internal/platform"
+	"github.com/sjc5/go-api-template/internal/session"
+	"github.com/sjc5/kit/pkg/middleware/secureheaders"
 )
 
 const OneMegabyteSize = 1048576
@@ -23,8 +24,8 @@ func ApplyGlobal(r *chi.Mux) {
 
 		// Security middleware
 		httprate.LimitByRealIP(1, 1*time.Second),
-		cors.New(cors.Options{AllowedOrigins: env.AllowedOrigins}).Handler,
-		secureHeadersMiddleware,
+		cors.New(cors.Options{AllowedOrigins: platform.GetEnv().AllowedOrigins}).Handler,
+		secureheaders.Middleware,
 
 		// Some more basic middleware appropriate to apply later
 		chimiddleware.Compress(5),

@@ -2,8 +2,8 @@ package router
 
 import (
 	"github.com/go-chi/chi/v5"
-	"github.com/sjc5/go-api-template/handle"
-	"github.com/sjc5/go-api-template/middleware"
+	"github.com/sjc5/go-api-template/internal/handler"
+	"github.com/sjc5/go-api-template/internal/middleware"
 )
 
 func Init() *chi.Mux {
@@ -15,13 +15,13 @@ func Init() *chi.Mux {
 }
 
 func setupPublicRoutes(r chi.Router) {
-	r.Get("/public", handle.Public)
+	r.Get("/public", handler.Public)
 }
 
 func setupProtectedRoutes(r chi.Router) {
 	r.Group(func(r chi.Router) {
 		applyProtectedMiddleware(r)
-		r.Get("/protected", handle.Protected)
+		r.Get("/protected", handler.Protected)
 	})
 }
 
